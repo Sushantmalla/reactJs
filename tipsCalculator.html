@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator</title>
+    <style>
+        .form-container{
+            height: auto;
+            width: 207px;
+            background: bisque;
+            padding: 50px;
+            text-align: center;
+            position: absolute;
+            top: 65px;
+            left: 468px;
+        }
+        .form-control{
+            margin: 20px;
+        }
+        .form-input{
+            padding: 7px;
+            margin: 8px;
+        }
+        .calculate-btn{
+            padding: 8px;
+            background: greenyellow;
+            font-size: 17px;
+        }
+        .calculate-btn:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-control">
+            <label>Total Amount</label>
+            <input type="number" placeholder="Total Amount" id="total-amount" class="form-input">
+        </div>
+        <div class="form-control">
+            <label>Tip Percentage</label>
+            <input type="number" placeholder="Tip Percentage" id="tip-percentage" class="form-input">  
+        </div>
+        
+        <button class="calculate-btn" id = "calculate">Calculate</button>
+        <div class="form-control">
+            <label>Tip Amount</label>
+            <input type="text" placeholder="" id="tip-amount" class="form-input" disabled>
+        </div>
+    </div>
+    <script>
+        document.getElementById("calculate").addEventListener('click',function(){
+            let TotalAmount = document.getElementById('total-amount').value;
+            let percentage = document.getElementById('tip-percentage').value;
+            if(TotalAmount != "" && percentage != ""){
+                TotalAmount = parseInt(TotalAmount);
+                percentage = parseInt(percentage);
+                let tipAmount = (percentage/100)*TotalAmount;
+                document.getElementById('tip-amount').value=tipAmount;
+            }
+            else{
+                document.getElementById('tip-amount').value = "Not Valid Inputs";
+            }
+
+        });
+
+    </script>
+</body>
+</html>

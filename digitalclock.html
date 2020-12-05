@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        #clock{
+            background:url('watch.png');
+            height: 300px;
+            width: 708px;
+            padding: 32px;
+            font-size: 85px;
+            font-weight: 600;
+            font-family: monospace;
+            position: relative;
+        }
+        .time{
+            position: absolute;
+            top: 90px;
+            left: 90px;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            margin-top: 167px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="clock">
+            <div class="time">
+                <span id="hour"></span>:<span id="minute"></span>:<span id="second"></span>&nbsp<span id="am-pm"></span>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showTime(){
+            let time = new Date();
+            var hour = time.getHours();
+            let minute = time.getMinutes();
+            let seconds = time.getSeconds();
+            document.getElementById('minute').innerHTML=minute;
+            document.getElementById('second').innerHTML=seconds;
+            let amPm = 'AM';
+            if(hour>12){
+                amPm = 'PM';
+                hour = hour - 12;
+            }else if(hour==00){
+                hour = 12;
+            }
+            document.getElementById('hour').innerHTML=hour;
+            document.getElementById('am-pm').innerHTML=amPm;
+        }
+
+
+        setInterval(showTime,1000);
+    </script>
+</body>
+</html>
